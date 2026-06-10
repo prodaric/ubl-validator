@@ -1,6 +1,6 @@
 # Pipeline de validación
 
-Orquestación en `src/pipeline/run-pipeline.ts`. Orden fijo:
+Visión general en lenguaje llano: [overview.md](./overview.md). Orquestación en `src/pipeline/run-pipeline.ts`. Orden fijo:
 
 ```
 input → detectDocumentType → detectProfile → etapas → ValidationResult

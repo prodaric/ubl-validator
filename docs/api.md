@@ -1,5 +1,7 @@
 # API
 
+Referencia de tipos y funciones. Para entender el flujo completo antes de integrar, lee [Qué es y cómo funciona](./overview.md).
+
 ## Punto de entrada principal
 
 ```ts

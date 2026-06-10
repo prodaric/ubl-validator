@@ -1,11 +1,13 @@
 # Primeros pasos
 
+Si aún no tienes claro qué es UBL ni qué hace cada capa del validador, empieza por [Qué es y cómo funciona](./overview.md).
+
 ## Instalación
 
-### npm (cuando esté publicado)
+### npm (recomendado)
 
 ```bash
-npm install @prodaric/ubl-validator
+npm install @prodaric/ubl-validator@alpha
 ```
 
 ### Desde GitHub
@@ -123,6 +125,8 @@ npm run schemas:profiles:fetch   # regenera vendor + registry
 
 ## Siguiente lectura
 
+- [Qué es y cómo funciona](./overview.md) — visión general y FAQ
 - [API](./api.md) — opciones completas y forma del resultado
 - [Pipeline](./pipeline.md) — qué hace cada etapa
+- [Errores](./errors.md) — interpretar códigos y severidad
 - [Roadmap](./roadmap.md) — límites actuales y trabajo pendiente

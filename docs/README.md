@@ -1,11 +1,14 @@
 # Documentación — @prodaric/ubl-validator
 
-Validador UBL 2.1 para Node.js, browser y Angular. Versión actual: **`2.1.0-alpha.1`** (`npm install @prodaric/ubl-validator@alpha`).
+Validador UBL 2.1 para Node.js, browser y Angular. Versión actual: **`2.1.0-alpha.2`** (`npm install @prodaric/ubl-validator@alpha`).
+
+**¿Primera vez aquí?** Lee [Qué es y cómo funciona](./overview.md) — explica UBL, el pipeline, perfiles DIAN/Peppol y cómo interpretar los resultados sin jerga previa.
 
 ## Índice
 
 | Documento | Contenido |
 |-----------|-----------|
+| [**Qué es y cómo funciona**](./overview.md) | Conceptos, arquitectura, casos de uso, FAQ |
 | [Primeros pasos](./getting-started.md) | Instalación, CLI, ejemplos mínimos |
 | [API](./api.md) | `validate()`, opciones, `ValidationResult`, exports |
 | [Pipeline](./pipeline.md) | Etapas, orden, `failFast`, agregación de resultados |
