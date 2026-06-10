@@ -1,6 +1,6 @@
 {
   "name": "@prodaric/ubl-validator",
-  "version": "2.1.0-alpha.1",
+  "version": "2.1.0-alpha.2",
   "description": "Validador de documentos UBL 2.1 (XML y JSON) conforme a esquemas OASIS",
   "author": "Prodaric",
   "license": "Apache-2.0",
