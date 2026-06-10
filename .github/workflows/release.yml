@@ -39,8 +39,8 @@ jobs:
       - name: Setup profile artifacts
         run: npm run schemas:profiles:fetch
 
-      - name: Download DIAN fixtures
-        run: npm run fixtures:dian
+      - name: Verify vendored DIAN fixtures
+        run: npm run fixtures:dian:verify
 
       - name: Verify version matches release tag
         run: |

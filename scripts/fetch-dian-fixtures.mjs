@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Descarga la Caja de herramientas FE v1.9 (DIAN) y extrae XMLs de ejemplo.
- * Fuente: https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/documentacion-tecnica/
+ * Mantenimiento: descarga la Caja de herramientas FE v1.9 (DIAN) y actualiza
+ * tests/fixtures/dian/ (empaquetado en git). CI no usa este script.
+ * Fuente: https://www.dian.gov.co/impuestos/factura-electronica/
  */
 import { createWriteStream } from "node:fs";
 import { cpSync, mkdirSync, readdirSync } from "node:fs";

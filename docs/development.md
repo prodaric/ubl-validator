@@ -17,7 +17,8 @@
 | `npm run schemas:registry` | Genera `schemas/registry.json` (65 tipos) |
 | `npm run schemas:setup` | fetch + registry |
 | `npm run schemas:profiles:fetch` | DIAN + Peppol vendor + `profiles/registry.json` |
-| `npm run fixtures:dian` | XMLs oficiales DIAN → `tests/fixtures/dian/` |
+| `npm run fixtures:dian:verify` | Comprueba XMLs DIAN empaquetados en `tests/fixtures/dian/` |
+| `npm run fixtures:dian:fetch` | Mantenimiento: re-descarga ZIP DIAN y actualiza fixtures (commit) |
 | `npm run fixtures:minimal` | Stubs XML para tipos sin ejemplo OASIS |
 
 ## Estructura del código
@@ -57,13 +58,13 @@ tests/
 | `dian-fixtures` | XSD OASIS sobre XMLs DIAN |
 | `crypto-opt-in` | Etapa crypto opt-in |
 
-Fixtures DIAN requieren `npm run fixtures:dian` (descarga ZIP; puede omitirse en local si ya existen bajo `tests/fixtures/dian/xml/`).
+Los XML DIAN oficiales están **empaquetados** en `tests/fixtures/dian/` (versionados en git). CI ejecuta `fixtures:dian:verify`, no descarga en red. Para actualizar desde la caja DIAN: `npm run fixtures:dian:fetch` y commit de los cambios.
 
 ## CI
 
 GitHub Actions: `.github/workflows/ci.yml`
 
-- `npm ci` → `schemas:setup` → `schemas:profiles:fetch` → `fixtures:dian` → `test:coverage`
+- `npm ci` → `schemas:setup` → `schemas:profiles:fetch` → `fixtures:dian:verify` → `test:coverage`
 
 Dependabot: `.github/dependabot.yml` (npm + actions, semanal).
 

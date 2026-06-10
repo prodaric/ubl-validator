@@ -61,7 +61,7 @@ describeDian("DIAN official XML exemplifications (UBL 2.1 structural)", () => {
 
 if (!dianFixturesAvailable()) {
   describe("DIAN fixtures (skipped)", () => {
-    it("run npm run fixtures:dian to download official XML examples", () => {
+    it("run npm run fixtures:dian:fetch to refresh official XML examples", () => {
       expect(true).toBe(true);
     });
   });

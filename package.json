@@ -64,7 +64,9 @@
     "schemas:setup": "npm run schemas:fetch && npm run schemas:registry",
     "schemas:profiles:fetch": "node scripts/fetch-dian-schemas.mjs && node scripts/fetch-peppol-schemas.mjs && node scripts/build-profile-registry.mjs",
     "fixtures:minimal": "node scripts/generate-minimal-fixtures.mjs",
-    "fixtures:dian": "node scripts/fetch-dian-fixtures.mjs",
+    "fixtures:dian:fetch": "node scripts/fetch-dian-fixtures.mjs",
+    "fixtures:dian:verify": "node scripts/verify-dian-fixtures.mjs",
+    "fixtures:dian": "npm run fixtures:dian:fetch",
     "prepublishOnly": "npm run test:ci"
   },
   "dependencies": {

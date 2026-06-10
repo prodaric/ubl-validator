@@ -77,7 +77,8 @@ Detalle: [docs/roadmap.md](./docs/roadmap.md).
 ```bash
 npm run schemas:setup
 npm run schemas:profiles:fetch
-npm run fixtures:dian          # opcional; XMLs DIAN para tests
+npm run fixtures:dian:verify   # comprueba XMLs DIAN empaquetados (CI)
+npm run fixtures:dian:fetch    # mantenimiento: actualizar desde ZIP DIAN
 npm run build
 npm test                       # suite completa
 npm run test:coverage          # gate ≥85% (CI)
