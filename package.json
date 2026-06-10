@@ -1,0 +1,69 @@
+{
+  "name": "@prodaric/ubl-validator",
+  "version": "2.1.0",
+  "description": "Validador de documentos UBL 2.1 (XML y JSON) conforme a esquemas OASIS",
+  "author": "Prodaric",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prodaric/ubl-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prodaric/ubl-validator/issues"
+  },
+  "homepage": "https://github.com/prodaric/ubl-validator#readme",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/browser.d.ts",
+      "import": "./dist/browser.js"
+    },
+    "./angular": {
+      "types": "./dist/angular/index.d.ts",
+      "import": "./dist/angular/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "README.md",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "schemas:fetch": "node scripts/fetch-schemas.mjs",
+    "schemas:registry": "node scripts/build-registry.mjs",
+    "schemas:setup": "npm run schemas:fetch && npm run schemas:registry",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "xml-xsd-engine": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "@angular/forms": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/forms": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

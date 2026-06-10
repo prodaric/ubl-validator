@@ -1,0 +1,528 @@
+{
+  "ublVersion": "2.1",
+  "generatedAt": "2026-06-10T21:21:32.787Z",
+  "documentCount": 65,
+  "documents": [
+    {
+      "documentType": "ApplicationResponse",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ApplicationResponse-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ApplicationResponse-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "AttachedDocument",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-AttachedDocument-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-AttachedDocument-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "AwardedNotification",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-AwardedNotification-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-AwardedNotification-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "BillOfLading",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-BillOfLading-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-BillOfLading-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CallForTenders",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CallForTenders-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CallForTenders-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "Catalogue",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Catalogue-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Catalogue-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CatalogueDeletion",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CatalogueDeletion-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CatalogueDeletion-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CatalogueItemSpecificationUpdate",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CatalogueItemSpecificationUpdate-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CatalogueItemSpecificationUpdate-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CataloguePricingUpdate",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CataloguePricingUpdate-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CataloguePricingUpdate-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CatalogueRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CatalogueRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CatalogueRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CertificateOfOrigin",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CertificateOfOrigin-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CertificateOfOrigin-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "ContractAwardNotice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ContractAwardNotice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ContractAwardNotice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "ContractNotice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ContractNotice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ContractNotice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "CreditNote",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-CreditNote-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-CreditNote-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-CreditNote-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-CreditNote-2.1-Example.json"
+    },
+    {
+      "documentType": "DebitNote",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-DebitNote-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-DebitNote-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-DebitNote-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-DebitNote-2.1-Example.json"
+    },
+    {
+      "documentType": "DespatchAdvice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-DespatchAdvice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-DespatchAdvice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "DocumentStatus",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-DocumentStatus-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-DocumentStatus-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "DocumentStatusRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-DocumentStatusRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-DocumentStatusRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "ExceptionCriteria",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ExceptionCriteria-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ExceptionCriteria-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-ExceptionCriteria-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-ExceptionCriteria-2.1-Example.json"
+    },
+    {
+      "documentType": "ExceptionNotification",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ExceptionNotification-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ExceptionNotification-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-ExceptionNotification-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-ExceptionNotification-2.1-Example.json"
+    },
+    {
+      "documentType": "Forecast",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Forecast-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Forecast-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-Forecast-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-Forecast-2.1-Example.json"
+    },
+    {
+      "documentType": "ForecastRevision",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ForecastRevision-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ForecastRevision-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-ForecastRevision-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-ForecastRevision-2.1-Example.json"
+    },
+    {
+      "documentType": "ForwardingInstructions",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ForwardingInstructions-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ForwardingInstructions-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "FreightInvoice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-FreightInvoice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-FreightInvoice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-FreightInvoice-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-FreightInvoice-2.1-Example.json"
+    },
+    {
+      "documentType": "FulfilmentCancellation",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-FulfilmentCancellation-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-FulfilmentCancellation-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-FulfilmentCancellation-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-FulfilmentCancellation-2.1-Example.json"
+    },
+    {
+      "documentType": "GoodsItemItinerary",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-GoodsItemItinerary-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-GoodsItemItinerary-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-GoodsItemItinerary-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-GoodsItemItinerary-2.1-Example.json"
+    },
+    {
+      "documentType": "GuaranteeCertificate",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-GuaranteeCertificate-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-GuaranteeCertificate-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "InstructionForReturns",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-InstructionForReturns-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-InstructionForReturns-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-InstructionForReturns-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-InstructionForReturns-2.1-Example.json"
+    },
+    {
+      "documentType": "InventoryReport",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-InventoryReport-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-InventoryReport-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-InventoryReport-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-InventoryReport-2.1-Example.json"
+    },
+    {
+      "documentType": "Invoice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Invoice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-Invoice-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-Invoice-2.1-Example.json"
+    },
+    {
+      "documentType": "ItemInformationRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ItemInformationRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ItemInformationRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "Order",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Order-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Order-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-Order-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-Order-2.1-Example.json"
+    },
+    {
+      "documentType": "OrderCancellation",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-OrderCancellation-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-OrderCancellation-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-OrderCancellation-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-OrderCancellation-2.1-Example.json"
+    },
+    {
+      "documentType": "OrderChange",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-OrderChange-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-OrderChange-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-OrderChange-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-OrderChange-2.1-Example.json"
+    },
+    {
+      "documentType": "OrderResponse",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-OrderResponse-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-OrderResponse-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-OrderResponse-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-OrderResponse-2.1-Example.json"
+    },
+    {
+      "documentType": "OrderResponseSimple",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-OrderResponseSimple-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-OrderResponseSimple-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-OrderResponseSimple-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-OrderResponseSimple-2.1-Example.json"
+    },
+    {
+      "documentType": "PackingList",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-PackingList-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-PackingList-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "PriorInformationNotice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-PriorInformationNotice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-PriorInformationNotice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "ProductActivity",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ProductActivity-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ProductActivity-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-ProductActivity-2.1-Example-1.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-ProductActivity-2.1-Example-1.json"
+    },
+    {
+      "documentType": "Quotation",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Quotation-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Quotation-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-Quotation-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-Quotation-2.1-Example.json"
+    },
+    {
+      "documentType": "ReceiptAdvice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-ReceiptAdvice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-ReceiptAdvice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "Reminder",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Reminder-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Reminder-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-Reminder-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-Reminder-2.1-Example.json"
+    },
+    {
+      "documentType": "RemittanceAdvice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-RemittanceAdvice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-RemittanceAdvice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "RequestForQuotation",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-RequestForQuotation-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-RequestForQuotation-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-RequestForQuotation-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-RequestForQuotation-2.1-Example.json"
+    },
+    {
+      "documentType": "RetailEvent",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-RetailEvent-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-RetailEvent-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-RetailEvent-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-RetailEvent-2.1-Example.json"
+    },
+    {
+      "documentType": "SelfBilledCreditNote",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-SelfBilledCreditNote-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-SelfBilledCreditNote-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-SelfBilledCreditNote-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-SelfBilledCreditNote-2.1-Example.json"
+    },
+    {
+      "documentType": "SelfBilledInvoice",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-SelfBilledInvoice-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-SelfBilledInvoice-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "Statement",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Statement-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Statement-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "StockAvailabilityReport",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-StockAvailabilityReport-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-StockAvailabilityReport-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-StockAvailabilityReport-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-StockAvailabilityReport-2.1-Example.json"
+    },
+    {
+      "documentType": "Tender",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Tender-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Tender-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "TenderReceipt",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TenderReceipt-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TenderReceipt-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "TendererQualification",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TendererQualification-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TendererQualification-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "TendererQualificationResponse",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TendererQualificationResponse-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TendererQualificationResponse-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "TradeItemLocationProfile",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TradeItemLocationProfile-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TradeItemLocationProfile-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TradeItemLocationProfile-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TradeItemLocationProfile-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportExecutionPlan",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportExecutionPlan-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportExecutionPlan-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportExecutionPlan-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportExecutionPlan-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportExecutionPlanRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportExecutionPlanRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportExecutionPlanRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportExecutionPlanRequest-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportExecutionPlanRequest-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportProgressStatus",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportProgressStatus-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportProgressStatus-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportProgressStatus-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportProgressStatus-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportProgressStatusRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportProgressStatusRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportProgressStatusRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportProgressStatusRequest-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportProgressStatusRequest-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportServiceDescription",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportServiceDescription-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportServiceDescription-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportServiceDescription-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportServiceDescription-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportServiceDescriptionRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportServiceDescriptionRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportServiceDescriptionRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportServiceDescriptionRequest-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportServiceDescriptionRequest-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportationStatus",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportationStatus-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportationStatus-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportationStatus-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportationStatus-2.1-Example.json"
+    },
+    {
+      "documentType": "TransportationStatusRequest",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-TransportationStatusRequest-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-TransportationStatusRequest-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common",
+      "exampleXml": "vendor/ubl-2.1/xml/UBL-TransportationStatusRequest-2.1-Example.xml",
+      "exampleJson": "vendor/ubl-2.1-json-v2.0/json-model/UBL-TransportationStatusRequest-2.1-Example.json"
+    },
+    {
+      "documentType": "UnawardedNotification",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-UnawardedNotification-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-UnawardedNotification-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "UtilityStatement",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-UtilityStatement-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-UtilityStatement-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    },
+    {
+      "documentType": "Waybill",
+      "xsd": "vendor/ubl-2.1/xsd/maindoc/UBL-Waybill-2.1.xsd",
+      "jsonModel": "vendor/ubl-2.1-json-v2.0/json-schema-model/maindoc/UBL-Waybill-2.1.json",
+      "xsdCommonDir": "vendor/ubl-2.1/xsd/common",
+      "jsonCommonDir": "vendor/ubl-2.1-json-v2.0/json-schema-model/common"
+    }
+  ]
+}
