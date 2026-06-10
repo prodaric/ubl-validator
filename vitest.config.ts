@@ -5,8 +5,9 @@ export default defineConfig({
     include: ["tests/**/*.test.ts"],
     testTimeout: 120_000,
     hookTimeout: 300_000,
-    dangerouslyIgnoreUnhandledErrors: true,
+    pool: "threads",
     fileParallelism: false,
+    maxWorkers: 1,
     sequence: {
       concurrent: false,
     },

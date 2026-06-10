@@ -1,9 +1,10 @@
 name: Release
 
+# Publica en npm cuando se publica un GitHub Release (no al crear solo el tag).
+# Flujo: bump version en package.json → commit → tag v* → gh release create → npm publish.
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -13,13 +14,17 @@ jobs:
     name: Test & publish to npm
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.release.tag_name }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "22"
           registry-url: https://registry.npmjs.org
@@ -37,13 +42,24 @@ jobs:
       - name: Download DIAN fixtures
         run: npm run fixtures:dian
 
+      - name: Verify version matches release tag
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          VERSION="${TAG#v}"
+          PKG=$(node -p "require('./package.json').version")
+          if [ "$PKG" != "$VERSION" ]; then
+            echo "::error::package.json ($PKG) no coincide con el tag de release ($VERSION)"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_ENV"
+
       - name: Test with coverage
         run: npm run test:coverage
 
       - name: Determine dist-tag
         id: tag
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${{ env.version }}"
           if echo "$VERSION" | grep -Eq 'alpha|beta|rc'; then
             if echo "$VERSION" | grep -q alpha; then echo "dist=alpha" >> "$GITHUB_OUTPUT"
             elif echo "$VERSION" | grep -q beta; then echo "dist=beta" >> "$GITHUB_OUTPUT"
@@ -51,9 +67,13 @@ jobs:
           else
             echo "dist=latest" >> "$GITHUB_OUTPUT"
           fi
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Verify npm token
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::Secret NPM_TOKEN no configurado. Ejecuta: gh secret set NPM_TOKEN -R prodaric/ubl-validator"
+            exit 1
+          fi
 
       - name: Publish to npm
-        run: npm publish --access public --tag ${{ steps.tag.outputs.dist }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --tag ${{ steps.tag.outputs.dist }} --ignore-scripts

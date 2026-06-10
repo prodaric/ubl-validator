@@ -84,17 +84,19 @@ Paquete scoped `@prodaric/ubl-validator` con `"publishConfig": { "access": "publ
 ```bash
 npm run test:coverage
 npm version 2.1.0-alpha.2   # o editar package.json
-git push && git push --tags
-npm publish --access public --tag alpha
+git push origin main
+git tag v2.1.0-alpha.2
+git push origin v2.1.0-alpha.2
+gh release create v2.1.0-alpha.2 --generate-notes --prerelease
 ```
+
+El workflow `.github/workflows/release.yml` publica en npm al **publicar** un GitHub Release (`release: published`), no al pushear el tag solo. Requiere el secret `NPM_TOKEN` y que `package.json` coincida con el tag (`v2.1.0-alpha.2` → `2.1.0-alpha.2`).
 
 Instalación por consumidores:
 
 ```bash
 npm install @prodaric/ubl-validator@alpha
 ```
-
-Workflow `.github/workflows/release.yml` publica automáticamente al pushear tags `v*` si existe el secret `NPM_TOKEN` en GitHub.
 
 ### Estable (futuro)
 
