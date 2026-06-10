@@ -2,136 +2,109 @@
 
 Validador de documentos **UBL 2.1** en **XML** y **JSON** (model-based OASIS) para Node.js, browser y Angular Forms.
 
-> **Estado:** desarrollo (`2.1.0-dev.x`). Pipeline estructural con detección automática de perfiles DIAN/Peppol, reglas IND y crypto opt-in.
+> **Estado:** `2.1.0-alpha.1` — primera alpha pública. Pipeline estructural con perfiles DIAN/Peppol (auto-detect), reglas IND y crypto opt-in.  
+> **No producción** hasta `2.1.0` estable · [CHANGELOG](./CHANGELOG.md) · [Roadmap](./docs/roadmap.md)
+
+```bash
+npm install @prodaric/ubl-validator@alpha
+```
 
 ## Instalación
 
-Desde GitHub ([prodaric/ubl-validator](https://github.com/prodaric/ubl-validator)):
-
-```bash
-npm install github:prodaric/ubl-validator
-```
-
-Rama o commit concreto:
-
 ```bash
 npm install github:prodaric/ubl-validator#main
+# o, cuando esté en npm:
+# npm install @prodaric/ubl-validator
+```
+
+## Inicio rápido
+
+```ts
+import { validate } from "@prodaric/ubl-validator";
+
+const result = await validate(xml);
+// result.stages: schema → ind → profile (si aplica)
+// result.meta.profileDetected: "dian-fe-1.9" | "peppol-bis-billing-3" | "oasis-ubl-2.1" | …
+
+await validate(xml, { profile: "none" });  // solo OASIS + IND
+await validate(xml, { crypto: true });     // + verificación cripto (parcial)
+```
+
+```bash
+npx ubl-validate factura.xml --profile auto --json-report
+```
+
+## Documentación
+
+| Guía | Descripción |
+|------|-------------|
+| [docs/README.md](./docs/README.md) | Índice y estado por capa |
+| [Primeros pasos](./docs/getting-started.md) | Instalación, CLI, browser, Angular |
+| [API](./docs/api.md) | `validate()`, opciones, subpaths |
+| [Pipeline](./docs/pipeline.md) | Etapas schema → ind → profile → … |
+| [Perfiles](./docs/profiles.md) | DIAN, Peppol, detección automática |
+| [Conformidad UBL 2.1](./docs/conformance-ubl-2.1.md) | IND rules, criterios release |
+| [Errores](./docs/errors.md) | Códigos, stages, sources |
+| [Desarrollo](./docs/development.md) | Scripts, tests, CI |
+| [Roadmap / Pendiente](./docs/roadmap.md) | Qué falta por implementar |
+
+## Exports
+
+| Import | Uso |
+|--------|-----|
+| `@prodaric/ubl-validator` | Core: `validate`, detección, registry |
+| `@prodaric/ubl-validator/profile` | Perfiles, Schematron, registry |
+| `@prodaric/ubl-validator/crypto` | CUFE / crypto opt-in |
+| `@prodaric/ubl-validator/browser` | Validación con schemas vía HTTP |
+| `@prodaric/ubl-validator/angular` | Async validator para Forms |
+
+## Alcance actual (resumen)
+
+| Capa | Estado |
+|------|--------|
+| XSD OASIS + JSON model (65 tipos) | Implementado |
+| Reglas IND (XML) | Implementado |
+| Auto-detect DIAN / Peppol | Implementado |
+| Schematron perfil | Parcial (evaluador ligero, reglas mínimas) |
+| XSD extensión DIAN | Pendiente |
+| Codelist Appendix E | Pendiente (stub) |
+| Crypto CUFE / XAdES | Parcial (opt-in) |
+
+Detalle: [docs/roadmap.md](./docs/roadmap.md).
+
+## Desarrollo y tests
+
+```bash
+npm run schemas:setup
+npm run schemas:profiles:fetch
+npm run fixtures:dian          # opcional; XMLs DIAN para tests
+npm run build
+npm test                       # suite completa
+npm run test:coverage          # gate ≥85% (CI)
+npm run test:ci                # prepublishOnly
+```
+
+CI: GitHub Actions en cada push/PR a `main`. Release: tag `v*` → workflow `release.yml` (requiere `NPM_TOKEN`).
+
+### Lanzamiento alpha
+
+```bash
+npm run test:coverage
+git tag v2.1.0-alpha.1
+git push origin v2.1.0-alpha.1
+# GitHub Actions publica con dist-tag alpha si NPM_TOKEN está configurado
+# Manual: npm publish --access public --tag alpha
 ```
 
 ## Versionado
 
-| Versión npm | Significado |
-|-------------|-------------|
-| `2.1.0-dev.n` | Desarrollo activo |
-| `2.1.0` | Estable: validación UBL 2.1 completa según alcance acordado |
+| Versión | Significado |
+|---------|-------------|
+| `2.1.0-alpha.n` | Alpha pública (`npm install @alpha`) |
+| `2.1.0-beta.n` | Beta (prevista) |
+| `2.1.0` | Estable según [criterios](./docs/conformance-ubl-2.1.md) |
 
-El **`2.1`** del paquete corresponde al estándar **UBL 2.1**, no a semver mayor independiente.
-
-## Uso (Node.js)
-
-```ts
-import { validate } from "@prodaric/ubl-validator";
-import { readFileSync } from "node:fs";
-
-const xml = readFileSync("invoice.xml", "utf8");
-const result = await validate(xml);
-
-// Solo OASIS + IND (sin Schematron de perfil)
-await validate(xml, { profile: "none" });
-
-// CUFE / firmas (opt-in)
-await validate(xml, { crypto: true });
-```
-
-### CLI
-
-```bash
-npx ubl-validate invoice.xml --profile auto
-npx ubl-validate invoice.xml --profile none --json-report
-```
-
-## Perfiles (DIAN / Peppol)
-
-Por defecto se detecta el perfil desde `CustomizationID`, `ProfileID` y extensiones DIAN. Ver [docs/profiles.md](./docs/profiles.md).
-
-```ts
-import { detectProfileFromSignals } from "@prodaric/ubl-validator/profile";
-```
-
-Instalar artefactos de perfil:
-
-```bash
-npm run schemas:profiles:fetch
-```
-
-## Uso (Angular Forms)
-
-```ts
-import { FormGroup } from "@angular/forms";
-import { createUblAsyncValidator } from "@prodaric/ubl-validator/angular";
-
-const form = new FormGroup(
-  { /* documento UBL en JSON model */ },
-  { asyncValidators: [createUblAsyncValidator({ documentType: "Invoice", format: "json" })] },
-);
-```
-
-## Uso (browser)
-
-Copia la carpeta `schemas/` a tus assets y configura el lector antes de validar:
-
-```ts
-import { configureBrowserSchemas, validate } from "@prodaric/ubl-validator/browser";
-
-configureBrowserSchemas("/assets/ubl-schemas/");
-const result = await validate(jsonDocument);
-```
-
-## API
-
-- `validate(input, options?)` — pipeline: schema → IND → perfil (auto) → crypto (opt-in)
-- `detectDocumentType(input)` — detecta tipo entre los **65** documentos UBL 2.1
-- `detectProfileFromSignals(input)` — perfil DIAN / Peppol / OASIS
-- `@prodaric/ubl-validator/profile` — registry y ProfileStage
-- `@prodaric/ubl-validator/crypto` — CUFE / verificación cripto (opt-in)
-- `UBL_DOCUMENT_TYPES` — lista de tipos registrados
-- `preloadDocumentTypes(types)` — precarga XSD/JSON Schema en memoria
-
-Documentación: [docs/conformance-ubl-2.1.md](./docs/conformance-ubl-2.1.md), [docs/errors.md](./docs/errors.md).
-
-## Testing
-
-Suite principal: **33 ejemplos oficiales OASIS** (XML+JSON del paquete UBL 2.1) en `tests/oasis-official-examples.test.ts`.
-
-```bash
-npm run schemas:setup          # esquemas OASIS (primera vez)
-npm run schemas:profiles:fetch # DIAN + Peppol Schematron/XSD
-npm run fixtures:dian          # XMLs oficiales DIAN (opcional)
-npm run build
-npm test
-npm run test:coverage          # gate ≥85% líneas
-```
-
-Criterios OASIS:
-- **XML:** 33/33 válidos contra XSD OASIS (IND5 documentado en 3 ejemplos)
-- **JSON model:** 32/33 válidos; `OrderResponse` documentado como gap del fixture OASIS
-- **Perfiles:** auto-detect DIAN/Peppol; override `{ profile: "none" }`
-
-### Fixtures DIAN (Colombia)
-
-La [DIAN](https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/documentacion-tecnica/) publica la **Caja de herramientas Factura Electrónica v1.9** con decenas de XML UBL 2.1 de ejemplo.
-
-```bash
-npm run fixtures:dian
-```
-
-Los tests validan **XSD OASIS** (`profile: "none"`) y **perfil DIAN** (`tests/profile-dian.test.ts`) con Schematron empaquetado.
-
-## Desarrollo
-
-```bash
-npm run test:ci         # build + tests
-```
+El **`2.1`** corresponde al estándar **UBL 2.1**, no al semver mayor del paquete.
 
 ## Licencia
 

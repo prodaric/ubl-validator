@@ -37,4 +37,10 @@ export function expectIssueShape(issue: ValidationIssue): void {
   expect(issue.rule).toEqual(expect.any(String));
   expect(issue.message).toEqual(expect.any(String));
   expect(["error", "warning"]).toContain(issue.severity);
+  if (issue.code !== undefined) {
+    expect(typeof issue.code).toBe("string");
+  }
+  if (issue.stage !== undefined) {
+    expect(["parse", "schema", "ind", "profile", "codelist", "crypto"]).toContain(issue.stage);
+  }
 }

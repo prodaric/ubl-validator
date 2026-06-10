@@ -1,37 +1,83 @@
 # Conformidad UBL 2.1
 
-Referencia de capas implementadas respecto a UBL 2.1 OS y perfiles empaquetados.
+Mapa entre el estándar [UBL 2.1 OS](https://docs.oasis-open.org/ubl/os-UBL-2.1/) y lo implementado en `@prodaric/ubl-validator`.
+
+## Indicadores de conformidad (IND)
+
+| IND | Descripción UBL | Implementación | Default |
+|-----|-----------------|----------------|---------|
+| IND1 | Esquema XSD / modelo | **SchemaStage** | Siempre |
+| IND2 | Declaración XML con encoding | **IndRulesStage** | Siempre (XML) |
+| IND3 | UTF-8 recomendado | Warning IND3 | Siempre (XML) |
+| IND4 | — | No aplicado | — |
+| IND5 | Sin elementos vacíos | **IndRulesStage** | Siempre (XML) |
+| IND6 | — | No aplicado | — |
+| IND7 | languageID único entre hermanos | **IndRulesStage** | Siempre (XML) |
+| IND8 | languageID en hermanos Text | **IndRulesStage** | Siempre (XML) |
+| Appendix E | Codelists (DTQ) | **CodeListStage** stub | Opt-in |
+
+### Gaps documentados en fixtures OASIS
+
+Algunos ejemplos oficiales OASIS **pasan XSD** pero **violan IND5** (elementos vacíos):
+
+- `ForecastRevision`
+- `OrderResponse`
+- `ProductActivity`
+
+Lista en `tests/helpers/known-fixture-gaps.ts`.
+
+### JSON model
+
+- **32/33** ejemplos oficiales validan contra JSON Schema model
+- **OrderResponse:** gap `additionalProperties` en fixture OASIS (XML del mismo tipo sí valida)
 
 ## Capas del pipeline
 
-| Capa | Default | Norma / origen |
-|------|---------|----------------|
-| **SchemaStage** | Siempre | IND1 — XSD OASIS o JSON Schema model |
-| **IndRulesStage** | Siempre | IND2, IND5, IND7, IND8 (error); IND3 (warning) |
-| **ProfileStage** | Auto si perfil ≠ OASIS | DIAN FE v1.9, Peppol BIS Billing 3.x |
-| **CodeListStage** | `{ codelist: true }` | Appendix E (stub / opt-in) |
-| **CryptoStage** | `{ crypto: true }` | CUFE DIAN, firmas UBL §5 (opt-in) |
+Ver [pipeline.md](./pipeline.md). Resumen:
 
-## IND rules (XML)
+| Capa | Default | Estado |
+|------|---------|--------|
+| SchemaStage | Sí | Completo |
+| IndRulesStage | Sí (XML) | Completo (IND2/3/5/7/8) |
+| ProfileStage | Auto | Parcial |
+| CodeListStage | Opt-in | Pendiente |
+| CryptoStage | Opt-in | Parcial |
 
-| Código | Regla UBL | Severidad |
-|--------|-----------|-----------|
-| `IND2_ENCODING_REQUIRED` | Declaración XML con `encoding` | error |
-| `IND3_ENCODING_SHOULD_UTF8` | Se recomienda UTF-8 | warning |
-| `IND5_EMPTY_ELEMENT` | No elementos vacíos (`<tag/>`) | error |
-| `IND7_DUPLICATE_LANGUAGE_ID` | Hermanos Text sin `languageID` duplicado | error |
-| `IND8_MISSING_LANGUAGE_ID` | Varios hermanos Text requieren `languageID` | error |
+## Perfiles estructurales
 
-> Algunos ejemplos oficiales OASIS usan elementos vacíos y fallan IND5 aunque pasen XSD. Ver `tests/helpers/known-fixture-gaps.ts`.
+DIAN FE y Peppol BIS forman parte del pipeline estructural (no post-proceso opcional). Detalle en [profiles.md](./profiles.md).
 
-## Perfiles
+## Cobertura de tipos documento (IND1)
 
-Ver [profiles.md](./profiles.md).
+| Métrica | Valor |
+|---------|-------|
+| Tipos en registry | **65** |
+| Con ejemplo XML oficial OASIS | **33** |
+| Tests XSD (profile:none) | 33/33 oficiales + registry 65 paths |
 
-## Criterios release 2.1.0
+Los 32 tipos sin ejemplo oficial tienen stubs mínimos en `tests/fixtures/minimal-xml/` (no garantizan validez XSD).
 
-- IND1: 65 tipos registrados; 33 ejemplos OASIS XSD válidos
-- IND2/5/7/8 activos en XML
-- Auto-detect DIAN / Peppol / OASIS
-- Override `{ profile: "none" }`
-- Crypto opt-in separado de ProfileStage
+## Criterios release `2.1.0`
+
+| Criterio | Estado |
+|----------|--------|
+| IND1 — 65 tipos registrados, XSD paths válidos | ✓ |
+| IND1 — 33 ejemplos OASIS XML vs XSD | ✓ |
+| IND2/5/7/8 en XML | ✓ |
+| Auto-detect DIAN / Peppol / OASIS | ✓ |
+| Override `{ profile: "none" }` | ✓ |
+| DIAN Schematron con fixtures oficiales | Parcial (reglas mínimas) |
+| Peppol BIS Schematron | Parcial (reglas mínimas) |
+| Crypto opt-in separado | Parcial |
+| Cobertura tests ≥85% | ✓ |
+| CI en GitHub Actions | ✓ |
+
+Items pendientes para considerar **2.1.0 estable** vs **2.1.0-dev**: [roadmap.md](./roadmap.md).
+
+## Entornos
+
+| Entorno | IND1 + IND | Perfil | Crypto |
+|---------|------------|--------|--------|
+| Node.js | ✓ | ✓ (parcial) | ✓ (parcial) |
+| Browser | ✓ | ✗ | ✗ |
+| Angular | ✓ (JSON) | ✗ | ✗ |

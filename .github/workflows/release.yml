@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Test & publish to npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup OASIS schemas
+        run: npm run schemas:setup
+
+      - name: Setup profile artifacts
+        run: npm run schemas:profiles:fetch
+
+      - name: Download DIAN fixtures
+        run: npm run fixtures:dian
+
+      - name: Test with coverage
+        run: npm run test:coverage
+
+      - name: Determine dist-tag
+        id: tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if echo "$VERSION" | grep -Eq 'alpha|beta|rc'; then
+            if echo "$VERSION" | grep -q alpha; then echo "dist=alpha" >> "$GITHUB_OUTPUT"
+            elif echo "$VERSION" | grep -q beta; then echo "dist=beta" >> "$GITHUB_OUTPUT"
+            else echo "dist=rc" >> "$GITHUB_OUTPUT"; fi
+          else
+            echo "dist=latest" >> "$GITHUB_OUTPUT"
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to npm
+        run: npm publish --access public --tag ${{ steps.tag.outputs.dist }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
