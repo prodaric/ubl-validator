@@ -3,23 +3,12 @@ import type { SchemaModel } from "xml-xsd-engine";
 import path from "node:path";
 import { getRegistryDocument } from "./registry/index.js";
 import { readSchemaText, schemasRoot } from "./schema-reader/index.js";
-import type { ValidationIssue, ValidationResult } from "./types.js";
+import type { ValidationIssue } from "./types.js";
 import { UBL_VERSION } from "./types.js";
+import { mapXsdIssues } from "./errors/map-xsd-issues.js";
+import { ErrorCodes } from "./errors/codes.js";
 
 const schemaCache = new Map<string, Promise<SchemaModel>>();
-
-function mapXsdIssues(
-  issues: Array<{ severity: string; message: string; path: string; line?: number; col?: number; code?: string }>,
-): ValidationIssue[] {
-  return issues.map((issue) => ({
-    rule: issue.code ?? "XSD",
-    message: issue.message,
-    severity: issue.severity === "warning" ? "warning" : "error",
-    path: issue.path,
-    line: issue.line,
-    col: issue.col,
-  }));
-}
 
 async function createXsdLoader(mainXsdRelative: string) {
   const mainXsdAbsDir = path.dirname(path.join(schemasRoot, mainXsdRelative));
@@ -67,10 +56,10 @@ export function clearXsdSchemaCache(): void {
   schemaCache.clear();
 }
 
-export async function validateXml(
+export async function validateXmlDocument(
   xml: string,
   documentType: string,
-): Promise<ValidationResult> {
+): Promise<{ errors: ValidationIssue[]; warnings: ValidationIssue[] }> {
   const schema = await loadXsdSchema(documentType);
   let doc;
   try {
@@ -78,22 +67,38 @@ export async function validateXml(
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return {
-      valid: false,
-      documentType,
-      ublVersion: UBL_VERSION,
-      format: "xml",
-      errors: [{ rule: "XML_PARSE", message, severity: "error" }],
+      errors: [
+        {
+          rule: ErrorCodes.XML_PARSE,
+          code: ErrorCodes.XML_PARSE,
+          message,
+          severity: "error",
+          stage: "schema",
+          source: "oasis-ind1",
+        },
+      ],
+      warnings: [],
     };
   }
 
   const result = validateAgainstXsd(doc, schema);
-  const errors = mapXsdIssues([...result.errors, ...result.warnings]);
-
+  const mapped = mapXsdIssues(result.errors, "schema");
+  const mappedWarnings = mapXsdIssues(result.warnings, "schema");
   return {
-    valid: result.valid,
+    errors: mapped.errors,
+    warnings: mappedWarnings.warnings,
+  };
+}
+
+/** @deprecated Use validate() pipeline; kept for direct XSD access. */
+export async function validateXml(xml: string, documentType: string) {
+  const { errors, warnings } = await validateXmlDocument(xml, documentType);
+  return {
+    valid: errors.length === 0,
     documentType,
     ublVersion: UBL_VERSION,
-    format: "xml",
+    format: "xml" as const,
     errors,
+    warnings,
   };
 }

@@ -6,7 +6,8 @@ import {
   mapIssuesToFormErrors,
 } from "../src/angular/index.js";
 import type { ValidationIssue } from "../src/types.js";
-import { invoiceJsonObject } from "./helpers/fixtures.js";
+import { getOasisOfficialExample } from "./helpers/oasis-official-examples.js";
+import { readJsonFixture } from "./helpers/fixtures.js";
 
 describe("angular adapters", () => {
   const sampleIssues: ValidationIssue[] = [
@@ -34,15 +35,18 @@ describe("angular adapters", () => {
   });
 
   it("createUblAsyncValidator validates UBL JSON documents", async () => {
+    const invoice = getOasisOfficialExample("Invoice");
+    const invoiceJsonObject = readJsonFixture<Record<string, unknown>>(invoice.exampleJson);
     const validator = createUblAsyncValidator({ format: "json", documentType: "Invoice" });
     await expect(validator({ value: invoiceJsonObject })).resolves.toBeNull();
   });
 
   it("createUblFieldAsyncValidator scopes errors to a document section", async () => {
-    const broken = structuredClone(invoiceJsonObject) as Record<string, unknown>;
-    const invoice = (broken.Invoice ?? {}) as Record<string, unknown>;
-    delete invoice.ID;
-    broken.Invoice = invoice;
+    const invoiceExample = getOasisOfficialExample("Invoice");
+    const broken = structuredClone(readJsonFixture<Record<string, unknown>>(invoiceExample.exampleJson));
+    const invoicePayload = (broken.Invoice ?? {}) as Record<string, unknown>;
+    delete invoicePayload.ID;
+    broken.Invoice = invoicePayload;
 
     const validator = createUblFieldAsyncValidator({
       format: "json",

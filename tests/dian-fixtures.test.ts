@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { detectDocumentType, validate } from "../src/index.js";
-import { expectValidUblResult } from "./helpers/assertions.js";
+import { expectSchemaValidUblResult } from "./helpers/assertions.js";
 import {
   dianFixturesAvailable,
   DIAN_CORE_FIXTURES,
@@ -22,8 +22,12 @@ describeDian("DIAN official XML exemplifications (UBL 2.1 structural)", () => {
     async (file) => {
       const xml = readDianXmlFixture(file);
       const detected = detectDocumentType(xml);
-      const result = await validate(xml, { format: "xml", documentType: detected.documentType });
-      expectValidUblResult(result, {
+      const result = await validate(xml, {
+        format: "xml",
+        documentType: detected.documentType,
+        profile: "none",
+      });
+      expectSchemaValidUblResult(result, {
         documentType: detected.documentType,
         format: "xml",
       });

@@ -3,8 +3,10 @@ import type { ValidateFunction } from "ajv";
 import path from "node:path";
 import { getRegistryDocument } from "./registry/index.js";
 import { readSchemaText, schemasRoot } from "./schema-reader/index.js";
-import type { ValidateOptions, ValidationIssue, ValidationResult } from "./types.js";
+import type { ValidateOptions, ValidationIssue } from "./types.js";
 import { UBL_VERSION } from "./types.js";
+import { mapAjvErrors } from "./errors/map-ajv-errors.js";
+import { ErrorCodes } from "./errors/codes.js";
 
 const Ajv = Ajv2020.default ?? Ajv2020;
 
@@ -57,35 +59,24 @@ export function clearJsonValidatorCache(): void {
   validatorCache.clear();
 }
 
-function mapAjvErrors(
-  errors: NonNullable<ValidateFunction["errors"]>,
-): ValidationIssue[] {
-  return errors.map((error) => ({
-    rule: error.keyword,
-    message: error.message ?? "JSON Schema validation error",
-    severity: "error" as const,
-    path: error.instancePath || "/",
-  }));
-}
-
-export async function validateJson(
+export async function validateJsonDocument(
   value: string | Record<string, unknown>,
   documentType: string,
   options?: Pick<ValidateOptions, "jsonVariant">,
-): Promise<ValidationResult> {
+): Promise<{ errors: ValidationIssue[]; warnings: ValidationIssue[] }> {
   if (options?.jsonVariant === "legacy") {
     return {
-      valid: false,
-      documentType,
-      ublVersion: UBL_VERSION,
-      format: "json",
       errors: [
         {
-          rule: "UNSUPPORTED",
+          rule: ErrorCodes.UNSUPPORTED,
+          code: ErrorCodes.UNSUPPORTED,
           message: 'JSON variant "legacy" is not supported yet. Use jsonVariant: "model".',
           severity: "error",
+          stage: "schema",
+          source: "oasis-json",
         },
       ],
+      warnings: [],
     };
   }
 
@@ -96,11 +87,17 @@ export async function validateJson(
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       return {
-        valid: false,
-        documentType,
-        ublVersion: UBL_VERSION,
-        format: "json",
-        errors: [{ rule: "JSON_PARSE", message, severity: "error" }],
+        errors: [
+          {
+            rule: ErrorCodes.JSON_PARSE,
+            code: ErrorCodes.JSON_PARSE,
+            message,
+            severity: "error",
+            stage: "schema",
+            source: "oasis-json",
+          },
+        ],
+        warnings: [],
       };
     }
   } else {
@@ -111,10 +108,24 @@ export async function validateJson(
   const valid = validateFn(parsed) as boolean;
 
   return {
-    valid,
+    errors: valid ? [] : mapAjvErrors(validateFn.errors ?? [], "schema"),
+    warnings: [],
+  };
+}
+
+/** @deprecated Use validate() pipeline; kept for direct JSON Schema access. */
+export async function validateJson(
+  value: string | Record<string, unknown>,
+  documentType: string,
+  options?: Pick<ValidateOptions, "jsonVariant">,
+) {
+  const { errors, warnings } = await validateJsonDocument(value, documentType, options);
+  return {
+    valid: errors.length === 0,
     documentType,
     ublVersion: UBL_VERSION,
-    format: "json",
-    errors: valid ? [] : mapAjvErrors(validateFn.errors ?? []),
+    format: "json" as const,
+    errors,
+    warnings,
   };
 }

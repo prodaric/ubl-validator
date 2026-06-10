@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-06-10T21:47:14.092Z",
+  "profiles": [
+    {
+      "id": "oasis-ubl-2.1",
+      "label": "OASIS UBL 2.1 base",
+      "match": {},
+      "schematron": [],
+      "documentTypes": []
+    },
+    {
+      "id": "dian-fe-1.9",
+      "label": "DIAN Factura Electrónica v1.9 (Colombia)",
+      "match": {
+        "xmlNamespaces": [
+          "dian:gov:co:facturaelectronica"
+        ],
+        "profileIdPatterns": [
+          "DIAN"
+        ],
+        "uuidSchemePatterns": [
+          "CUFE-SHA384"
+        ]
+      },
+      "schema": {
+        "extensionXsd": "vendor/dian-fe-1.9/xsd/DIAN-Structures-2.1.xsd"
+      },
+      "schematron": [
+        "vendor/dian-fe-1.9/schematron/UBL-CreditNote-DIAN.sch",
+        "vendor/dian-fe-1.9/schematron/UBL-DebitNote-DIAN.sch",
+        "vendor/dian-fe-1.9/schematron/UBL-Invoice-DIAN.sch"
+      ],
+      "documentTypes": [
+        "Invoice",
+        "CreditNote",
+        "DebitNote",
+        "ApplicationResponse",
+        "AttachedDocument"
+      ],
+      "crypto": {
+        "cufe": true,
+        "xades": true
+      }
+    },
+    {
+      "id": "peppol-bis-billing-3",
+      "label": "Peppol BIS Billing 3.0",
+      "match": {
+        "customizationIdPatterns": [
+          "peppol\\.eu",
+          "en16931"
+        ],
+        "profileIdPatterns": [
+          "peppol\\.eu",
+          "poacc:billing"
+        ]
+      },
+      "schematron": [
+        "vendor/peppol-bis-billing-3/schematron/Peppol-BIS-Billing-3.0.sch"
+      ],
+      "documentTypes": [
+        "Invoice",
+        "CreditNote"
+      ],
+      "crypto": {}
+    },
+    {
+      "id": "bii-legacy",
+      "label": "CEN BII legacy profile",
+      "match": {
+        "profileIdPatterns": [
+          "cenbii",
+          "cenbii\\.eu"
+        ]
+      },
+      "schematron": [],
+      "documentTypes": []
+    }
+  ]
+}

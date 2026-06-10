@@ -2,7 +2,7 @@
 
 Validador de documentos **UBL 2.1** en **XML** y **JSON** (model-based OASIS) para Node.js, browser y Angular Forms.
 
-> **Estado:** desarrollo (`2.1.0-dev.x`). La versión estable **`2.1.0`** se publicará cuando el paquete cumpla el alcance completo alineado con el estándar UBL 2.1 (y capas DIAN en fases posteriores).
+> **Estado:** desarrollo (`2.1.0-dev.x`). Pipeline estructural con detección automática de perfiles DIAN/Peppol, reglas IND y crypto opt-in.
 
 ## Instalación
 
@@ -36,11 +36,32 @@ import { readFileSync } from "node:fs";
 const xml = readFileSync("invoice.xml", "utf8");
 const result = await validate(xml);
 
-if (!result.valid) {
-  for (const issue of result.errors) {
-    console.error(issue.path, issue.message);
-  }
-}
+// Solo OASIS + IND (sin Schematron de perfil)
+await validate(xml, { profile: "none" });
+
+// CUFE / firmas (opt-in)
+await validate(xml, { crypto: true });
+```
+
+### CLI
+
+```bash
+npx ubl-validate invoice.xml --profile auto
+npx ubl-validate invoice.xml --profile none --json-report
+```
+
+## Perfiles (DIAN / Peppol)
+
+Por defecto se detecta el perfil desde `CustomizationID`, `ProfileID` y extensiones DIAN. Ver [docs/profiles.md](./docs/profiles.md).
+
+```ts
+import { detectProfileFromSignals } from "@prodaric/ubl-validator/profile";
+```
+
+Instalar artefactos de perfil:
+
+```bash
+npm run schemas:profiles:fetch
 ```
 
 ## Uso (Angular Forms)
@@ -68,29 +89,43 @@ const result = await validate(jsonDocument);
 
 ## API
 
-- `validate(input, options?)` — validación unificada (`format: "auto" | "xml" | "json"`)
+- `validate(input, options?)` — pipeline: schema → IND → perfil (auto) → crypto (opt-in)
 - `detectDocumentType(input)` — detecta tipo entre los **65** documentos UBL 2.1
+- `detectProfileFromSignals(input)` — perfil DIAN / Peppol / OASIS
+- `@prodaric/ubl-validator/profile` — registry y ProfileStage
+- `@prodaric/ubl-validator/crypto` — CUFE / verificación cripto (opt-in)
 - `UBL_DOCUMENT_TYPES` — lista de tipos registrados
 - `preloadDocumentTypes(types)` — precarga XSD/JSON Schema en memoria
 
+Documentación: [docs/conformance-ubl-2.1.md](./docs/conformance-ubl-2.1.md), [docs/errors.md](./docs/errors.md).
+
 ## Testing
 
+Suite principal: **33 ejemplos oficiales OASIS** (XML+JSON del paquete UBL 2.1) en `tests/oasis-official-examples.test.ts`.
+
 ```bash
-npm run schemas:setup   # esquemas OASIS (primera vez)
-npm run fixtures:dian   # XMLs oficiales DIAN (caja herramientas v1.9)
+npm run schemas:setup          # esquemas OASIS (primera vez)
+npm run schemas:profiles:fetch # DIAN + Peppol Schematron/XSD
+npm run fixtures:dian          # XMLs oficiales DIAN (opcional)
 npm run build
 npm test
+npm run test:coverage          # gate ≥85% líneas
 ```
+
+Criterios OASIS:
+- **XML:** 33/33 válidos contra XSD OASIS (IND5 documentado en 3 ejemplos)
+- **JSON model:** 32/33 válidos; `OrderResponse` documentado como gap del fixture OASIS
+- **Perfiles:** auto-detect DIAN/Peppol; override `{ profile: "none" }`
 
 ### Fixtures DIAN (Colombia)
 
-La [DIAN](https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/documentacion-tecnica/) publica la **Caja de herramientas Factura Electrónica v1.9** con decenas de XML UBL 2.1 de ejemplo (`Ejemplificaciones/XMLs de ejemplo/`): Invoice, CreditNote, DebitNote, ApplicationResponse (RADIAN), etc.
+La [DIAN](https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/documentacion-tecnica/) publica la **Caja de herramientas Factura Electrónica v1.9** con decenas de XML UBL 2.1 de ejemplo.
 
 ```bash
 npm run fixtures:dian
 ```
 
-Eso descarga el ZIP oficial y extrae los XML a `tests/fixtures/dian/xml/`. Los tests en `tests/dian-fixtures.test.ts` validan **estructura UBL 2.1 OASIS (XSD)**. Las reglas de negocio DIAN (Schematron, `DianExtensions`, CUFE) serán una capa posterior.
+Los tests validan **XSD OASIS** (`profile: "none"`) y **perfil DIAN** (`tests/profile-dian.test.ts`) con Schematron empaquetado.
 
 ## Desarrollo
 

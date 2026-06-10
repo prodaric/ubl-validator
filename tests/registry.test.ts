@@ -8,6 +8,7 @@ import {
   UBL_DOCUMENT_TYPES,
 } from "../src/registry/index.js";
 import { schemasRoot } from "./helpers/fixtures.js";
+import { OASIS_OFFICIAL_EXAMPLE_COUNT } from "./helpers/oasis-official-examples.js";
 
 describe("registry", () => {
   it("registers 65 UBL 2.1 document types", () => {
@@ -24,10 +25,10 @@ describe("registry", () => {
     }
   });
 
-  it("indexes at least 30 official OASIS fixture pairs", () => {
+  it("indexes exactly 33 official OASIS XML+JSON fixture pairs", () => {
     const withExamples = getAllRegistryDocuments().filter(
       (doc) => doc.exampleXml && doc.exampleJson,
     );
-    expect(withExamples.length).toBeGreaterThanOrEqual(30);
+    expect(withExamples).toHaveLength(OASIS_OFFICIAL_EXAMPLE_COUNT);
   });
 });

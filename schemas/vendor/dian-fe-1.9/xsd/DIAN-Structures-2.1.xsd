@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="dian:gov:co:facturaelectronica:Structures-2-1"
+            elementFormDefault="qualified">
+  <xsd:element name="DianExtensions" type="xsd:anyType"/>
+</xsd:schema>
