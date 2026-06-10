@@ -1,6 +1,6 @@
 {
   "name": "@prodaric/ubl-validator",
-  "version": "2.1.0",
+  "version": "2.1.0-dev.0",
   "description": "Validador de documentos UBL 2.1 (XML y JSON) conforme a esquemas OASIS",
   "author": "Prodaric",
   "license": "Apache-2.0",
@@ -41,9 +41,11 @@
     "prepare": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:ci": "npm run build && vitest run",
     "schemas:fetch": "node scripts/fetch-schemas.mjs",
     "schemas:registry": "node scripts/build-registry.mjs",
     "schemas:setup": "npm run schemas:fetch && npm run schemas:registry",
+    "fixtures:dian": "node scripts/fetch-dian-fixtures.mjs",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
