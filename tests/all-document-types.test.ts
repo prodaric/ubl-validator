@@ -1,15 +1,11 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { beforeAll, describe, expect, it } from "vitest";
-import { getAllRegistryDocuments, preloadDocumentTypes, validate } from "../src/index.js";
+import { describe, expect, it } from "vitest";
+import { getAllRegistryDocuments, validate } from "../src/index.js";
 import { schemasRoot } from "../src/schema-reader/index.js";
 
 describe("all UBL 2.1 document types — OASIS XSD (profile:none)", () => {
   const documents = getAllRegistryDocuments();
-
-  beforeAll(async () => {
-    await preloadDocumentTypes(documents.map((d) => d.documentType));
-  });
 
   it("registry lists 65 UBL 2.1 document types with XSD paths", () => {
     expect(documents).toHaveLength(65);
